@@ -1,0 +1,41 @@
+{
+  "categories": ["milk", "plant_milk", "biscuit"],
+  "brands": ["amul", "nestle", "britania"],
+  "attributes": ["veg", "lactose_free", "sugar_free"],
+
+  "products": {
+    "amul_toned_milk": {
+      "price": 50,
+      "stock": 0,
+      "category": "milk",
+      "brand": "amul",
+      "attributes": ["veg"]
+    },
+    "nestle_slim_milk": {
+      "price": 55,
+      "stock": 10,
+      "category": "milk",
+      "brand": "nestle",
+      "attributes": ["veg", "lactose_free"]
+    },
+    "amul_almond_milk": {
+      "price": 65,
+      "stock": 8,
+      "category": "plant_milk",
+      "brand": "amul",
+      "attributes": ["veg", "lactose_free"]
+    },
+    "britania_digestive": {
+      "price": 30,
+      "stock": 15,
+      "category": "biscuit",
+      "brand": "britania",
+      "attributes": ["veg", "sugar_free"]
+    }
+  },
+
+  "category_similarity": {
+    "milk": ["plant_milk"],
+    "plant_milk": ["milk"]
+  }
+}
