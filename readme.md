@@ -9,3 +9,5 @@ A Streamlit-based web application that suggests alternative products when a requ
 ```bash
 pip install -r requirements.txt
 streamlit run app.py
+app URL
+https://shopkeeper-appuct-substitution-assistant-caud2wmrknbeyaedpetcq.streamlit.app/
