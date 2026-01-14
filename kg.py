@@ -1,5 +1,5 @@
-import networkx as nx
 import json
+import networkx as nx
 
 class KnowledgeGraph:
     def __init__(self, data_path):
@@ -7,32 +7,27 @@ class KnowledgeGraph:
         self.load_data(data_path)
 
     def load_data(self, path):
-        with open(path) as f:
-            data = json.load(f)
+        with open(path, "r", encoding="utf-8") as f:
+            products = json.load(f)
 
-        for product in data["products"]:
+        for product in products:
             pid = product["id"]
+
             self.graph.add_node(pid, type="product", **product)
 
             # Category
-            cat = product["id"]
-            self.graph.add_node(cat, type="category")
-            self.graph.add_edge(pid, cat, relation="IS_A")
+            category = product.get("category")
+            if category:
+                self.graph.add_node(category, type="category")
+                self.graph.add_edge(pid, category, relation="IS_A")
 
-            #Brand
-            brand = product["brand"]
-            self.graph.add_node(brand, type="brand")
-            self.graph.add_edge(pid, brand, relation="HAS_BRAND")
+            # Brand
+            brand = product.get("brand")
+            if brand:
+                self.graph.add_node(brand, type="brand")
+                self.graph.add_edge(pid, brand, relation="HAS_BRAND")
 
-            #Attributes
-            for attr in product["attributes"]:
+            # Attributes (SAFE)
+            for attr in product.get("attributes", []):
                 self.graph.add_node(attr, type="attribute")
                 self.graph.add_edge(pid, attr, relation="HAS_ATTRIBUTE")
-
-        #Category similarity
-        for cat, similars in data["category_similarity"].items():
-            for s in similars:
-                self.graph.add_edge(cat, s, relation="SIMILAR_TO")
-                        
-
-
