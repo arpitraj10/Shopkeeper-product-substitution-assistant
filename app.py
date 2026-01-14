@@ -3,7 +3,7 @@ from kg import KnowledgeGraph
 from reasoning import find_substitutes
 
 
-kg = KnowledgeGraph("C:\Users\ARPIT RAJPUROHIT\OneDrive\Documents\shopkeeper product substitution Assistant project\data\products.json")
+kg = KnowledgeGraph("data/products.json")
 
 
 st.title("Product Substitution Assistant")
@@ -36,4 +36,5 @@ if st.button("Find Alternative"):
                 st.write("Explanation:")
                 for r in rules:
                     st.write(f"- {r}")
+
                             
