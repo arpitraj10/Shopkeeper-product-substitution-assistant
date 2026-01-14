@@ -25,7 +25,7 @@ class KnowledgeGraph:
             self.graph.add_edge(pid, brand, relation="HAS_BRAND")
 
             #Attributes
-            for attr in product["atrributes"]:
+            for attr in product["attributes"]:
                 self.graph.add_node(attr, type="attribute")
                 self.graph.add_edge(pid, attr, relation="HAS_ATTRIBUTE")
 
@@ -34,3 +34,4 @@ class KnowledgeGraph:
             for s in similars:
                 self.graph.add_edge(cat, s, relation="SIMILAR_TO")
                         
+
